@@ -5,22 +5,23 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from accounts.manager import UserManager
 
 class User(AbstractBaseUser, PermissionsMixin):
-    id = models.BigAutoField(primary_key=True, editable=False) 
+    # id = models.BigAutoField(primary_key=True, editable=False) 
     email = models.EmailField(
         max_length=255, verbose_name=_("Email Address"), unique=True
     )
-    first_name = models.CharField(max_length=100, verbose_name=_("First Name"))
-    last_name = models.CharField(max_length=100, verbose_name=_("Last Name"))
+    fullname = models.CharField(max_length=100, verbose_name=_("Fullname"))
+    matricule = models.CharField(max_length=50)
+    password = models.CharField(max_length=50)  # the password is the same as matricule
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-    is_verified=models.BooleanField(default=False)
+    # is_verified=models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(auto_now_add=True)
     last_login = models.DateTimeField(auto_now=True)
 
     USERNAME_FIELD = "email"
 
-    REQUIRED_FIELDS = ["first_name", "last_name"]
+    REQUIRED_FIELDS = ["fullname"]
 
     objects = UserManager()
 
