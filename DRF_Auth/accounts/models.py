@@ -10,7 +10,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         max_length=255, verbose_name=_("Email Address"), unique=True
     )
     fullname = models.CharField(max_length=100, verbose_name=_("Fullname"))
-    matricule = models.CharField(max_length=50, unique=True)
+    matricule = models.CharField(max_length=50)
     password = models.CharField(max_length=50)  # the password is the same as matricule
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)

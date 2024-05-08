@@ -10,10 +10,10 @@ class Person(models.Model):
     
     def __str__(self):
         return self.full_name
-class Etudiant(Person):
+class Etudiant(User):
      def __str__(self):
         return self.full_name
 
-class Prof(Person):
+class Prof(User):
      def __str__(self):
         return self.full_name
